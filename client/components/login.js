@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { Button, Form, Message } from 'semantic-ui-react';
+import { Button, Form, Message, Header, Grid, Segment, Divider } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 
 class Login extends Component {
@@ -21,40 +21,47 @@ class Login extends Component {
     Meteor.loginWithPassword('test@test.com', '123456', err => {
       err ? this.setState({ error: err.reason }) : this.props.history.push('/');
     });
-  }
+  };
 
   render() {
     return (
-      <div>
-        <Message hidden={!this.state.error} color="red">
-          {this.state.error}
-        </Message>
-        <Form>
-          <Form.Input
-            onChange={this.handleChange}
-            name="email"
-            fluid
-            required
-            label="Email"
-            type="Email"
-            placeholder="Email"
-          />
-          <Form.Input
-            onChange={this.handleChange}
-            name="password"
-            fluid
-            required
-            label="Password"
-            type="Password"
-            placeholder="Password"
-          />
-          <Button onClick={this.handleSubmit} type="submit">
-            Login
-          </Button>
-        </Form>
-        New to Markdown Online? <Link to="/new-account">Create an account</Link>
-        If you don't want to register. <a onClick={this.onTestUser}>Enter with test user</a>
-      </div>
+      <Grid centered columns={1}>
+        <Grid.Column className="centered-form">
+          <Message hidden={!this.state.error} color="red">
+            {this.state.error}
+          </Message>
+          <Header textAlign="center" as="h3">
+            Login to Markdown Online
+          </Header>
+          <Segment stacked>
+            <Form>
+              <Form.Input
+                onChange={this.handleChange}
+                name="email"
+                fluid
+                required
+                label="Email"
+                type="Email"
+                placeholder="Email"
+              />
+              <Form.Input
+                onChange={this.handleChange}
+                name="password"
+                fluid
+                required
+                label="Password"
+                type="Password"
+                placeholder="Password"
+              />
+              <Button fluid color="blue" onClick={this.handleSubmit} type="submit">
+                Login
+              </Button>
+            </Form>
+          </Segment>
+          New to Markdown Online? <Link to="/new-account">Create an account</Link> or{' '}
+          <a onClick={this.onTestUser}>enter with test user</a>
+        </Grid.Column>
+      </Grid>
     );
   }
 }

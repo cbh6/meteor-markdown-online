@@ -2,3 +2,8 @@
 a {
   cursor: pointer;
 }
+
+.centered-form {
+  max-width: 450px;
+  margin-top: 80px;
+}

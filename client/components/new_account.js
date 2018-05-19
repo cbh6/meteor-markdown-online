@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button, Form, Message } from 'semantic-ui-react';
+import { Button, Form, Message, Header, Grid, Segment, Divider } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 
 class NewAccount extends Component {
@@ -19,34 +19,41 @@ class NewAccount extends Component {
 
   render() {
     return (
-      <div>
-        <Message hidden={!this.state.error} color="red">
-          {this.state.error}
-        </Message>
-        <Form>
-          <Form.Input
-            onChange={this.handleChange}
-            name="email"
-            fluid
-            required
-            label="Email"
-            type="Email"
-            placeholder="Email"
-          />
-          <Form.Input
-            onChange={this.handleChange}
-            name="password"
-            fluid
-            required
-            label="Password"
-            type="Password"
-            placeholder="Password"
-          />
-          <Button onClick={this.handleSubmit} type="submit">
-            Create account
-          </Button>
-        </Form>
-      </div>
+      <Grid centered columns={1}>
+        <Grid.Column className="centered-form">
+          <Message hidden={!this.state.error} color="red">
+            {this.state.error}
+          </Message>
+          <Header textAlign="center" as="h3">
+            Create new account
+          </Header>
+          <Segment stacked>
+            <Form>
+              <Form.Input
+                onChange={this.handleChange}
+                name="email"
+                fluid
+                required
+                label="Email"
+                type="Email"
+                placeholder="Email"
+              />
+              <Form.Input
+                onChange={this.handleChange}
+                name="password"
+                fluid
+                required
+                label="Password"
+                type="Password"
+                placeholder="Password"
+              />
+              <Button fluid color="blue" onClick={this.handleSubmit} type="submit">
+                Create account
+              </Button>
+            </Form>
+          </Segment>
+        </Grid.Column>
+      </Grid>
     );
   }
 }
