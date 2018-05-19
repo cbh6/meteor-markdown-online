@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { Button, Form, Message } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 
@@ -16,6 +16,12 @@ class Login extends Component {
       err ? this.setState({ error: err.reason }) : this.props.history.push('/');
     });
   };
+
+  onTestUser = () => {
+    Meteor.loginWithPassword('test@test.com', '123456', err => {
+      err ? this.setState({ error: err.reason }) : this.props.history.push('/');
+    });
+  }
 
   render() {
     return (
@@ -46,9 +52,11 @@ class Login extends Component {
             Login
           </Button>
         </Form>
+        New to Markdown Online? <Link to="/new-account">Create an account</Link>
+        If you don't want to register. <a onClick={this.onTestUser}>Enter with test user</a>
       </div>
     );
   }
 }
 
-export default Login;
+export default withRouter(Login);

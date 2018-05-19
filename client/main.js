@@ -18,8 +18,8 @@ const routes = (
           path="/"
           render={() => (Meteor.userId() ? <div><br /><br /><h1>Hola</h1></div> : <Redirect to="/login" />)}
         />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/new-account" component={NewAccount} />
+        <Route exact path="/login" render={() => (Meteor.userId() ? <div><br /><br /><h1>Hola</h1></div> : <Login />)} />
+        <Route exact path="/new-account" render={() => (Meteor.userId() ? <NewAccount /> : <NewAccount />)} />
       </Switch>
     </App>
   </Router>

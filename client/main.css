@@ -1,1 +1,4 @@
 /* CSS declarations go here */
+a {
+  cursor: pointer;
+}
