@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import { Menu, Segment } from 'semantic-ui-react';
+import Accounts from './accounts';
 
 class Header extends Component {
   constructor(props) {
@@ -8,6 +10,13 @@ class Header extends Component {
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  onLogout = e => {
+    e.preventDefault();
+    Meteor.logout(() => {
+      this.props.history.push('/login');
+    });
+  };
 
   render() {
     const { activeItem } = this.state;
@@ -27,16 +36,13 @@ class Header extends Component {
         />
         {Meteor.userId() ? (
           <Menu.Menu position="right">
-            <Menu.Item
-              name="logout"
-              active={activeItem === 'logout'}
-              onClick={this.handleItemClick}
-            />
+            <Menu.Item name="logout" active={activeItem === 'logout'} onClick={this.onLogout} />
           </Menu.Menu>
         ) : null}
+        <Accounts />
       </Menu>
     );
   }
 }
 
-export default Header;
+export default withRouter(Header);
