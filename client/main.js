@@ -1,22 +1,28 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import React from 'react';
+import { render } from 'react-dom';
+import createHistory from 'history/createBrowserHistory';
+import { Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import './main.html';
+import App from './components/app';
+import Login from './components/login';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+const history = createHistory();
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
+const routes = (
+  <Router history={history}>
+    <App>
+      <Switch>
+        <Route
+        exact
+          path="/"
+          render={() => (Meteor.userId() ? <p>Hola</p> : <Redirect to="/login" />)}
+        />
+        <Route exact path="/login" component={Login} />
+      </Switch>
+    </App>
+  </Router>
+);
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
+Meteor.startup(() => {
+  render(routes, document.querySelector('.react-root'));
 });
