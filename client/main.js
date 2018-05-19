@@ -6,6 +6,7 @@ import { Router, Route, Redirect, Switch } from 'react-router-dom';
 import App from './components/app';
 import Login from './components/login';
 import NewAccount from './components/new_account';
+import EditorsList from './components/editors/editors_list';
 
 const history = createHistory();
 
@@ -16,10 +17,10 @@ const routes = (
         <Route
         exact
           path="/"
-          render={() => (Meteor.userId() ? <div><br /><br /><h1>Hola</h1></div> : <Redirect to="/login" />)}
+          render={() => (Meteor.userId() ? <EditorsList /> : <Redirect to="/login" />)}
         />
-        <Route exact path="/login" render={() => (Meteor.userId() ? <div><br /><br /><h1>Hola</h1></div> : <Login />)} />
-        <Route exact path="/new-account" render={() => (Meteor.userId() ? <NewAccount /> : <NewAccount />)} />
+        <Route exact path="/login" render={() => (Meteor.userId() ? <EditorsList /> : <Login />)} />
+        <Route exact path="/new-account" render={() => (Meteor.userId() ? <EditorsList /> : <NewAccount />)} />
       </Switch>
     </App>
   </Router>

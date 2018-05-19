@@ -8,8 +8,7 @@ class Accounts extends Component {
     // Render the Blaze accounts form then find the div
     // we just rendered in the 'render' method and place
     // the Blaze accounts form in that div
-    this.view = Blaze.render(Template.loginButtons,
-      ReactDOM.findDOMNode(this.refs.container));
+    this.view = Blaze.render(Template.loginButtons, ReactDOM.findDOMNode(this.refs.container));
   }
 
   componentWillUnmount() {
@@ -19,9 +18,7 @@ class Accounts extends Component {
   }
 
   render() {
-    return (
-      <div ref="container"></div>
-    );
+    return <div ref="container" />;
   }
 }
 
