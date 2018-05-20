@@ -1,8 +1,9 @@
 import { Mongo } from 'meteor/mongo';
 
 Meteor.methods({
-  'editors.insert': function() {
+  'editors.insert': function(title) {
     return Editors.insert({
+      title,
       createdAt: new Date(),
       content: '',
       sharedWith: [],

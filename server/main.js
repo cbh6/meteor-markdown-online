@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Editors } from '../imports/collections/editors';
+import { Users } from '../imports/collections/users';
 
 Meteor.startup(() => {
   Meteor.publish('editors', function() {
