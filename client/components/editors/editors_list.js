@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Button, Header, List, Form, Container, Message, Icon } from 'semantic-ui-react';
-import Moment from 'react-moment';
+import EditorsListItem from './editors_list_item';
 import { Editors } from '../../../imports/collections/editors';
 import { Link } from 'react-router';
 
@@ -32,37 +32,11 @@ class EditorsList extends Component {
     });
   };
 
-  onEditorRemove(editor) {
-    Meteor.call('editors.remove', editor);
-  }
-
-  getUser(id) {
-    const user = Meteor.users.findOne({ _id: id });
-
-    if (user.emails && user.emails[0]) {
-      return user.emails[0].address;
-    }
-  }
-
   renderListItems() {
     return this.props.editors.map(editor => {
       const url = `/editors/${editor._id}`;
       return (
-        <List.Item key={editor._id}>
-          <List.Content floated="right">
-            <Button icon color="red" onClick={() => this.onEditorRemove(editor)}>
-              <Icon size="large" name="trash" />
-            </Button>
-          </List.Content>
-          <List.Icon name="file text" size="large" verticalAlign="middle" />
-          <List.Content>
-            <List.Header as="a">{editor.title}</List.Header>
-            <List.Description as="a">
-              Created at <Moment format="DD/MM/YYYY">{editor.createdAt.getTime()}</Moment> by{' '}
-              {this.getUser(editor.ownerId)}
-            </List.Description>
-          </List.Content>
-        </List.Item>
+        <EditorsListItem key={editor._id} url={url} editor={editor} />
       );
     });
   }
