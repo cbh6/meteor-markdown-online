@@ -11,6 +11,7 @@ Meteor.methods({
       content: '',
       sharedWith: [],
       ownerId: this.userId,
+      ownerEmail: Meteor.user().emails[0].address,
     });
   },
 

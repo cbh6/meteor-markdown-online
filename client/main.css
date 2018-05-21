@@ -3,11 +3,31 @@ a {
   cursor: pointer;
 }
 
+.md-title {
+  color: lightblue;
+  margin-left: 10px;
+}
+
+.shared-with-label {
+  background-color: rgb(196, 224, 235) !important;
+  border-color: gray !important;
+}
+
+.shared-with-form, .new-editor-form {
+  float: right;
+}
+
 .centered-form {
   max-width: 450px;
   margin-top: 80px;
 }
 
 .CodeMirror {
-  height: 400px;
+  height: 300px !important;
+}
+
+.editor-viewer {
+  height: 300px;
+  border: lightblue solid 1px;
+  overflow-y: scroll;
 }

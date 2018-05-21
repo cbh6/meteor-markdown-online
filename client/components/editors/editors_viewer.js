@@ -8,7 +8,7 @@ const EditorsViewer = (props) => {
   return (
     <div>
       <Header as="h2">Output</Header>
-      <div dangerouslySetInnerHTML={{ __html: rawHTML }} />
+      <div className="editor-viewer" dangerouslySetInnerHTML={{ __html: rawHTML }} />
     </div>
   );
 };

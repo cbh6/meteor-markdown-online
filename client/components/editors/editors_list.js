@@ -42,25 +42,27 @@ class EditorsList extends Component {
   render() {
     return (
       <Container>
-        <Header as="h2">Editors List</Header>
         <Message hidden={!this.state.error} color="red">
           {this.state.error}
         </Message>
-        <Form>
-          <Form.Group>
-            <Form.Input
-              onChange={this.handleChange}
-              name="editorTitle"
-              value={this.state.editorTitle}
-              required
-              type="text"
-              placeholder="Editor Title*"
-            />
-            <Form.Button color="blue" onClick={this.handleSubmit} type="submit">
-              Create new editor
-            </Form.Button>
-          </Form.Group>
-        </Form>
+        <Header as="h2">
+          Editors List
+          <Form className="new-editor-form">
+            <Form.Group>
+              <Form.Input
+                onChange={this.handleChange}
+                name="editorTitle"
+                value={this.state.editorTitle}
+                required
+                type="text"
+                placeholder="Editor Title*"
+              />
+              <Form.Button color="blue" onClick={this.handleSubmit} type="submit">
+                Create new editor
+              </Form.Button>
+            </Form.Group>
+          </Form>
+        </Header>
         <br />
         <br />
         <List divided relaxed verticalAlign="middle">
