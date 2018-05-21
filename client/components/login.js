@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { Button, Form, Message, Header, Grid, Segment, Divider } from 'semantic-ui-react';
-import { Accounts } from 'meteor/accounts-base';
+import PropTypes from 'prop-types';
+import { Button, Form, Message, Header, Grid, Segment, Item } from 'semantic-ui-react';
 
 class Login extends Component {
   constructor(props) {
@@ -9,7 +9,12 @@ class Login extends Component {
     this.state = { email: '', password: '', error: '' };
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value });
+  onTestUser = () => {
+    Meteor.loginWithPassword('test@test.com', '123456', (err) => {
+      err ? this.setState({ error: err.reason }) : this.props.history.push('/');
+    });
+  };
+
   handleSubmit = () => {
     const { email, password } = this.state;
     Meteor.loginWithPassword(email, password, (err) => {
@@ -17,11 +22,7 @@ class Login extends Component {
     });
   };
 
-  onTestUser = () => {
-    Meteor.loginWithPassword('test@test.com', '123456', (err) => {
-      err ? this.setState({ error: err.reason }) : this.props.history.push('/');
-    });
-  };
+  handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
   render() {
     return (
@@ -59,11 +60,17 @@ class Login extends Component {
             </Form>
           </Segment>
           New to Markdown Online? <Link to="/new-account">Create an account</Link> or{' '}
-          <a onClick={this.onTestUser}>enter with test user</a>
+          <Item as="a" onClick={this.onTestUser}>
+            enter with test user
+          </Item>
         </Grid.Column>
       </Grid>
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.object.isRequired,
+};
 
 export default withRouter(Login);

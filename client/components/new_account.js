@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button, Form, Message, Header, Grid, Segment, Divider } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { Button, Form, Message, Header, Grid, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 
 class NewAccount extends Component {
@@ -12,7 +13,7 @@ class NewAccount extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
   handleSubmit = () => {
     const { email, password } = this.state;
-    Accounts.createUser({ email, password }, err => {
+    Accounts.createUser({ email, password }, (err) => {
       err ? this.setState({ error: err.reason }) : this.props.history.push('/');
     });
   };
@@ -57,5 +58,9 @@ class NewAccount extends Component {
     );
   }
 }
+
+NewAccount.propTypes = {
+  history: PropTypes.object.isRequired,
+};
 
 export default withRouter(NewAccount);

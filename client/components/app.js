@@ -1,15 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Segment } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import Header from './header';
 
-export default (props) => {
-  return (
-    <div>
-      <Header />
-      <Segment basic>
-        {props.children}
-      </Segment>
-    </div>
-  );
+const App = props => (
+  <div>
+    <Header />
+    <Segment basic>{props.children}</Segment>
+  </div>
+);
+
+App.propTypes = {
+  children: PropTypes.object.isRequired,
 };
+
+export default App;

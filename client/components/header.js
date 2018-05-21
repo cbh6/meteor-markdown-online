@@ -1,29 +1,22 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
-import { Menu, Segment } from 'semantic-ui-react';
-import Accounts from './accounts';
-import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import { withRouter, Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { activeItem: 'home' };
-  }
-
-  onLogout = e => {
+  onLogout = (e) => {
     e.preventDefault();
     Meteor.logout(() => {
       this.props.history.push('/login');
     });
   };
 
-  onLogin = e => {
+  onLogin = (e) => {
     this.props.history.push('/login');
-  }
+  };
 
   render() {
-    const { activeItem } = this.state;
     const { user } = this.props;
 
     return (
@@ -46,6 +39,7 @@ class Header extends Component {
 
 Header.propTypes = {
   user: PropTypes.object,
+  history: PropTypes.object.isRequired,
 };
 
 Header.defaultProps = {
