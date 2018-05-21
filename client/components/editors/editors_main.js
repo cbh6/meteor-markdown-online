@@ -17,7 +17,7 @@ const EditorsMain = (props) => {
           <EditorsEditor editor={props.editor} />
         </Grid.Column>
         <Grid.Column>
-          {/* <EditorsViewer editor={props.editor} /> */}
+          <EditorsViewer editor={props.editor} />
         </Grid.Column>
       </Grid>
     </Container>

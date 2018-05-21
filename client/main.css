@@ -7,3 +7,7 @@ a {
   max-width: 450px;
   margin-top: 80px;
 }
+
+.CodeMirror {
+  height: 400px;
+}
