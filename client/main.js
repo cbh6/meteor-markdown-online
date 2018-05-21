@@ -15,12 +15,16 @@ const routes = (
     <App>
       <Switch>
         <Route
-        exact
+          exact
           path="/"
           render={() => (Meteor.userId() ? <EditorsList /> : <Redirect to="/login" />)}
         />
         <Route exact path="/login" render={() => (Meteor.userId() ? <EditorsList /> : <Login />)} />
-        <Route exact path="/new-account" render={() => (Meteor.userId() ? <EditorsList /> : <NewAccount />)} />
+        <Route
+          exact
+          path="/new-account"
+          render={() => (Meteor.userId() ? <EditorsList /> : <NewAccount />)}
+        />
       </Switch>
     </App>
   </Router>

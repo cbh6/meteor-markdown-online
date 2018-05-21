@@ -12,13 +12,13 @@ class Login extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
   handleSubmit = () => {
     const { email, password } = this.state;
-    Meteor.loginWithPassword(email, password, err => {
+    Meteor.loginWithPassword(email, password, (err) => {
       err ? this.setState({ error: err.reason }) : this.props.history.push('/');
     });
   };
 
   onTestUser = () => {
-    Meteor.loginWithPassword('test@test.com', '123456', err => {
+    Meteor.loginWithPassword('test@test.com', '123456', (err) => {
       err ? this.setState({ error: err.reason }) : this.props.history.push('/');
     });
   };
