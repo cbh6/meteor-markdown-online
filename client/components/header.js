@@ -16,12 +16,17 @@ class Header extends Component {
     this.props.history.push('/login');
   };
 
+  navigateToHome = () => {
+    this.props.history.push('/');
+  }
+
   render() {
     const { user } = this.props;
 
     return (
       <Menu>
         <Menu.Item header>Markdown Online</Menu.Item>
+        <Menu.Item name="editors" onClick={this.navigateToHome} />
         {Meteor.userId() ? (
           <Menu.Menu position="right">
             <Menu.Item name="logout" onClick={this.onLogout} />

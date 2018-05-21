@@ -7,6 +7,7 @@ import App from './components/app';
 import Login from './components/login';
 import NewAccount from './components/new_account';
 import EditorsList from './components/editors/editors_list';
+import EditorsMain from './components/editors/editors_main';
 
 const history = createHistory();
 
@@ -24,6 +25,13 @@ const routes = (
           exact
           path="/new-account"
           render={() => (Meteor.userId() ? <EditorsList /> : <NewAccount />)}
+        />
+        <Route
+          exact
+          path="/editors/:editorId"
+          render={props =>
+            (Meteor.userId() ? <EditorsMain {...props} /> : <Redirect to="/login" />)
+          }
         />
       </Switch>
     </App>

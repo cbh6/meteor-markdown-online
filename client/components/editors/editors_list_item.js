@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, List, Icon } from 'semantic-ui-react';
 import Moment from 'react-moment';
-
 
 class EditorsListItem extends Component {
   onEditorRemove(editor) {
@@ -11,14 +11,15 @@ class EditorsListItem extends Component {
   getUser(id) {
     const user = Meteor.users.findOne({ _id: id });
 
-    if (user.emails && user.emails[0]) {
-      return user.emails[0].address;
+    if (!user.emails) {
+      return false;
     }
+    return user.emails[0].address;
   }
 
   render() {
     const { editor, url } = this.props;
-  
+
     return (
       <List.Item key={editor._id}>
         <List.Content floated="right">
@@ -28,7 +29,9 @@ class EditorsListItem extends Component {
         </List.Content>
         <List.Icon name="file text" size="large" verticalAlign="middle" />
         <List.Content>
-          <List.Header as="a">{editor.title}</List.Header>
+          <List.Header as={Link} to={url}>
+            {editor.title}
+          </List.Header>
           <List.Description as="a">
             Created at <Moment format="DD/MM/YYYY">{editor.createdAt.getTime()}</Moment> by{' '}
             {this.getUser(editor.ownerId)}
