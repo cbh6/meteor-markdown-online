@@ -12,7 +12,7 @@ class Header extends Component {
     });
   };
 
-  onLogin = (e) => {
+  onLogin = () => {
     this.props.history.push('/login');
   };
 

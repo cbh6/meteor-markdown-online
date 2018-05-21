@@ -3,7 +3,7 @@
 /* eslint consistent-return: "off" */
 
 import { Meteor } from 'meteor/meteor';
-import { Editors } from '../imports/collections/editors';
+import Editors from '../imports/collections/editors';
 
 Meteor.startup(() => {
   Meteor.publish('editors', function () {

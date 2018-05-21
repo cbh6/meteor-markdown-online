@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Button, Header, List, Form, Container, Message, Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { Header, List, Form, Container, Message } from 'semantic-ui-react';
 import EditorsListItem from './editors_list_item';
-import { Editors } from '../../../imports/collections/editors';
-import { Link } from 'react-router';
+import Editors from '../../../imports/collections/editors';
 
 class EditorsList extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class EditorsList extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const { editorTitle } = this.state;
 
@@ -33,11 +33,9 @@ class EditorsList extends Component {
   };
 
   renderListItems() {
-    return this.props.editors.map(editor => {
+    return this.props.editors.map((editor) => {
       const url = `/editors/${editor._id}`;
-      return (
-        <EditorsListItem key={editor._id} url={url} editor={editor} />
-      );
+      return <EditorsListItem key={editor._id} url={url} editor={editor} />;
     });
   }
 
@@ -72,6 +70,14 @@ class EditorsList extends Component {
     );
   }
 }
+
+EditorsList.propTypes = {
+  editors: PropTypes.array,
+};
+
+EditorsList.defaultProps = {
+  editors: [],
+};
 
 export default withTracker(() => {
   Meteor.subscribe('editors');
