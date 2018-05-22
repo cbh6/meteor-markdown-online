@@ -26,7 +26,7 @@ class Login extends Component {
 
   render() {
     return (
-      <Grid centered columns={1}>
+      <Grid centered columns={1} className="login-page">
         <Grid.Column className="centered-form">
           <Message hidden={!this.state.error} color="red">
             {this.state.error}

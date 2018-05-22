@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Header, List, Form, Container, Message } from 'semantic-ui-react';
+import { Header, List, Form, Container, Message, Segment } from 'semantic-ui-react';
 import EditorsListItem from './editors_list_item';
 import Editors from '../../../imports/collections/editors';
 
@@ -65,9 +65,11 @@ class EditorsList extends Component {
         </Header>
         <br />
         <br />
-        <List divided relaxed verticalAlign="middle">
-          {this.renderListItems()}
-        </List>
+        <Segment basic>
+          <List divided relaxed verticalAlign="middle">
+            {this.renderListItems()}
+          </List>
+        </Segment>
       </Container>
     );
   }
