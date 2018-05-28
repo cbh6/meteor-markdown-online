@@ -20,6 +20,7 @@ class Login extends Component {
     Meteor.loginWithPassword(email, password, (err) => {
       if (err) {
         this.setState({ error: err.reason });
+        return;
       }
       Bert.alert('Logged in', 'success', 'growl-top-right');
       this.props.history.push('/');
