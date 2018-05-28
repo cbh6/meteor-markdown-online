@@ -40,11 +40,7 @@
     ]
   },
   "globals": {
-    "SSR": true,
-    "Roles": false,
     "moment": true,
-    "Bert": true,
-    "Counter": true,
-    "Twilio": true
+    "Bert": true
   }
 }
