@@ -13,6 +13,8 @@ Markdown Online is a real-time markdown editor. You can create your own editors 
 Deployed in heroku with free mlab plan as mongo database
 https://markdown-online.herokuapp.com
 
+![Demo](https://media.giphy.com/media/42EzvfHGHuUfKkJJQW/giphy.gif)
+
 ### Features
 
 * Login and account creation with Meteor
