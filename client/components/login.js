@@ -32,14 +32,14 @@ class Login extends Component {
     return (
       <Grid centered columns={1} className="login-page">
         <Grid.Column className="centered-form">
-          <Message hidden={!this.state.error} color="red">
-            {this.state.error}
-          </Message>
           <Image src="/images/markdown.png" size="tiny" centered />
           <Header textAlign="center" as="h3">
             Login to Markdown Online
           </Header>
           <Segment className="centered-segment">
+            <Message hidden={!this.state.error} color="red">
+              {this.state.error}
+            </Message>
             <Form>
               <Form.Input
                 onChange={this.handleChange}

@@ -16,6 +16,7 @@ class NewAccount extends Component {
     Accounts.createUser({ email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
+        return;
       }
       Bert.alert('Account created. Logged in', 'success', 'growl-top-right');
       this.props.history.push('/');
@@ -26,14 +27,14 @@ class NewAccount extends Component {
     return (
       <Grid centered columns={1}>
         <Grid.Column className="centered-form">
-          <Message hidden={!this.state.error} color="red">
-            {this.state.error}
-          </Message>
           <Image src="/images/markdown.png" size="tiny" centered />
           <Header textAlign="center" as="h3">
             Create new account
           </Header>
           <Segment className="centered-segment">
+            <Message hidden={!this.state.error} color="red">
+              {this.state.error}
+            </Message>
             <Form>
               <Form.Input
                 onChange={this.handleChange}
