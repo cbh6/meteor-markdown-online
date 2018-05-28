@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Form, Message, Header, Grid, Segment } from 'semantic-ui-react';
+import { Button, Form, Message, Header, Grid, Segment, Image } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 
 class NewAccount extends Component {
@@ -29,6 +29,7 @@ class NewAccount extends Component {
           <Message hidden={!this.state.error} color="red">
             {this.state.error}
           </Message>
+          <Image src="/images/markdown.png" size="tiny" centered />
           <Header textAlign="center" as="h3">
             Create new account
           </Header>
