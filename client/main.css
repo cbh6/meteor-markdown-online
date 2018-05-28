@@ -17,6 +17,9 @@ a {
   font-size: 0.9rem;
 }
 
+.main-nav {
+  background: linear-gradient(lightblue, #cee3ea);
+}
 .centered-segment {
   border: 1px solid #7693d9 !important;
 }
