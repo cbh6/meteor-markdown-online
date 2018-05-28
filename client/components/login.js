@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Form, Message, Header, Grid, Segment, Item } from 'semantic-ui-react';
+import { Button, Form, Message, Header, Grid, Segment, Item, Image } from 'semantic-ui-react';
 
 class Login extends Component {
   constructor(props) {
@@ -31,10 +31,11 @@ class Login extends Component {
           <Message hidden={!this.state.error} color="red">
             {this.state.error}
           </Message>
+          <Image src="/images/markdown.png" size="tiny" centered />
           <Header textAlign="center" as="h3">
             Login to Markdown Online
           </Header>
-          <Segment stacked>
+          <Segment className="centered-segment">
             <Form>
               <Form.Input
                 onChange={this.handleChange}
@@ -59,10 +60,12 @@ class Login extends Component {
               </Button>
             </Form>
           </Segment>
-          New to Markdown Online? <Link to="/new-account">Create an account</Link> or{' '}
-          <Item as="a" onClick={this.onTestUser}>
-            enter with test user
-          </Item>
+          <p className="login-subtitle">
+            New to Markdown Online? <Link to="/new-account">Create an account</Link> or{' '}
+            <Item as="a" onClick={this.onTestUser}>
+              enter with test user
+            </Item>
+          </p>
         </Grid.Column>
       </Grid>
     );

@@ -28,7 +28,7 @@ class NewAccount extends Component {
           <Header textAlign="center" as="h3">
             Create new account
           </Header>
-          <Segment stacked>
+          <Segment className="centered-segment">
             <Form>
               <Form.Input
                 onChange={this.handleChange}

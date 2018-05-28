@@ -1,10 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 /* CSS declarations go here */
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
 a {
   cursor: pointer;
 }
 
 .react-root {
   height: 100%;
+}
+
+.login-subtitle {
+  font-size: 0.9rem;
+}
+
+.centered-segment {
+  border: 1px solid #7693d9 !important;
 }
 
 .gradient {
@@ -46,6 +60,8 @@ a {
   overflow-y: scroll;
 }
 
+/* Keyframes ----------------------------------------
+--------------------------------------------------- */
 @-webkit-keyframes background-gradient {
   0% {
     background-position: 0% 50%;
