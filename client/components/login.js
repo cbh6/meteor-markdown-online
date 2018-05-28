@@ -18,7 +18,11 @@ class Login extends Component {
   handleSubmit = () => {
     const { email, password } = this.state;
     Meteor.loginWithPassword(email, password, (err) => {
-      err ? this.setState({ error: err.reason }) : this.props.history.push('/');
+      if (err) {
+        this.setState({ error: err.reason });
+      }
+      Bert.alert('Logged in', 'success', 'growl-top-right');
+      this.props.history.push('/');
     });
   };
 

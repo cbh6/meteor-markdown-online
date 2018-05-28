@@ -24,6 +24,7 @@ class EditorsShare extends Component {
 
     Meteor.call('editors.share', this.props.editor, shareEmail, (error, res) => {
       if (res) {
+        Bert.alert(`Editor shared with ${this.state.shareEmail}`, 'success', 'growl-top-right');
         this.setState({ shareEmail: '' });
       }
     });
