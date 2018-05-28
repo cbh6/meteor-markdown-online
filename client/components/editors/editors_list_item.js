@@ -6,7 +6,11 @@ import Moment from 'react-moment';
 
 class EditorsListItem extends Component {
   onEditorRemove(editor) {
-    Meteor.call('editors.remove', editor);
+    Meteor.call('editors.remove', editor, (err) => {
+      if (!err) {
+        Bert.alert('Editor successfuly deleted!', 'success', 'growl-top-right');
+      }
+    });
   }
 
   render() {
