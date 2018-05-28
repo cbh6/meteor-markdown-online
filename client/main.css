@@ -18,7 +18,7 @@ a {
 }
 
 .main-nav {
-  background: linear-gradient(lightblue, #cee3ea);
+  background: linear-gradient(lightblue, #cee3ea) !important;
 }
 .centered-segment {
   border: 1px solid #7693d9 !important;
